@@ -1,8 +1,6 @@
 ## Generator prototype creating stardust every second
 class_name PrototypeGenerator extends Control
 
-## Reference to the label displaying current amount of stardust
-@export var label : Label
 ## Reference to the button starting stardust generation
 @export var button : Button
 ## Reference to the timer
@@ -14,20 +12,11 @@ class_name PrototypeGenerator extends Control
 
 ## Initialize the label
 func _ready() -> void:
-	update_label_text()
 	user_interface.navigation_reuested.connect(_on_navigation_request)
-
-## Temporary function to update the label
-func _process(_delta: float) -> void:
-	update_label_text()
 
 ## Create stardust and store it
 func create_stardust() -> void:
-	Game.ref.data.stardust += 1
-
-## Updates label text to match the current amount in storage
-func update_label_text() -> void:
-	label.text = "Stardust : %s" %Game.ref.data.stardust
+	HandlerStardust.ref.create_stardust(1)
 
 ## Start the timner and disable the button
 func begin_generating_stardust() -> void:

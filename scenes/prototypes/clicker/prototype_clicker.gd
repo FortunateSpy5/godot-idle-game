@@ -1,8 +1,6 @@
 ## A clicker prototype creating stardust
 class_name PrototypeClicker extends Control
 
-## Reference to the label displaying the cuurent amount of stardust
-@export var label : Label
 ## Reference to the User Interface
 @export var user_interface : UserInterface
 ## View reference
@@ -10,20 +8,11 @@ class_name PrototypeClicker extends Control
 
 ## Initialize the label at the start
 func _ready() -> void:
-	update_label_text()
 	user_interface.navigation_reuested.connect(_on_navigation_request)
-
-## Temporary function to update the label
-func _process(_delta: float) -> void:
-	update_label_text()
 
 ## Create 1 stardust
 func create_stardust() -> void:
-	Game.ref.data.stardust += 1
-
-## Update the label to display updated text
-func update_label_text() -> void:
-	label.text = "Stardust: %s" %Game.ref.data.stardust
+	HandlerStardust.ref.create_stardust(1)
 
 ## Triggered when the create stardust button is pressed
 func _on_button_pressed() -> void:
