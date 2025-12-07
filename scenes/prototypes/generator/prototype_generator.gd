@@ -7,6 +7,10 @@ class_name PrototypeGenerator extends Control
 @export var button : Button
 ## Reference to the timer
 @export var timer : Timer
+## Reference to the User Interface
+@export var user_interface : UserInterface
+## View reference
+@export var view : UserInterface.Views
 
 ## Current amount of stardust in storage
 var stardust : int
@@ -14,6 +18,7 @@ var stardust : int
 ## Initialize the label
 func _ready() -> void:
 	update_label_text()
+	user_interface.navigation_reuested.connect(_on_navigation_request)
 
 ## Create stardust and store it
 func create_stardust() -> void:
@@ -36,3 +41,7 @@ func _on_button_pressed() -> void:
 ## Triggered when the timer times out
 func _on_timer_timeout() -> void:
 	create_stardust()
+
+## Watch for navigation requests and react accordingly
+func _on_navigation_request(requested_view : UserInterface.Views) -> void:
+	visible = requested_view == view
