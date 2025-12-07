@@ -12,22 +12,22 @@ class_name PrototypeGenerator extends Control
 ## View reference
 @export var view : UserInterface.Views
 
-## Current amount of stardust in storage
-var stardust : int
-
 ## Initialize the label
 func _ready() -> void:
 	update_label_text()
 	user_interface.navigation_reuested.connect(_on_navigation_request)
 
+## Temporary function to update the label
+func _process(_delta: float) -> void:
+	update_label_text()
+
 ## Create stardust and store it
 func create_stardust() -> void:
-	stardust += 1
-	update_label_text()
+	Game.ref.data.stardust += 1
 
 ## Updates label text to match the current amount in storage
 func update_label_text() -> void:
-	label.text = "Stardust : %s" %stardust
+	label.text = "Stardust : %s" %Game.ref.data.stardust
 
 ## Start the timner and disable the button
 func begin_generating_stardust() -> void:
