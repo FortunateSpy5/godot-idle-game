@@ -10,7 +10,7 @@ class_name PrototypeGenerator extends Control
 ## View reference
 @export var view : UserInterface.Views
 
-## Initialize the label
+## Connect the navigation signal at launch
 func _ready() -> void:
 	user_interface.navigation_reuested.connect(_on_navigation_request)
 

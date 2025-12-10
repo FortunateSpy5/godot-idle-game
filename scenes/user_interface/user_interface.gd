@@ -5,6 +5,7 @@ class_name UserInterface extends Control
 enum Views {
 	PROTOTYPE_GENERATOR,
 	PROTOTYPE_CLICKER,
+	PROTOTYPE_UPGRADES,
 }
 
 ## Initialize the correct view at the start
@@ -21,3 +22,7 @@ func _on_prototype_generator_link_pressed() -> void:
 ## Triggered when the prototype clicker is clicked
 func _on_prototype_clicker_link_pressed() -> void:
 	navigation_reuested.emit(Views.PROTOTYPE_CLICKER)
+
+## Triggered when the prototype upgrades is clicked
+func _on_prototype_upgrades_link_pressed() -> void:
+	navigation_reuested.emit(Views.PROTOTYPE_UPGRADES)
